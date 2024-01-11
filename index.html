@@ -13,14 +13,14 @@
     />
   </head>
   <body>
-    <div class="stopwatch">
-      <div class="display">
-        <p>00:00:00</p>
-        <div class="btns">
-          <div class="btn1">Start</div>
-          <div class="btn1">Stop</div>
-          <div class="btn1">Reset</div>
-        </div>
+    <div class="container">
+      <div class="row1">
+        <h1 id="displayTime">00 hrs : 00 mins : 00 secs</h1>
+      </div>
+      <div class="row2">
+        <button class="btns" onclick="watchStart()">Start</button>
+        <button class="btns" onclick="watchStop()">Stop</button>
+        <button class="btns" onclick="watchReset()">Reset</button>
       </div>
     </div>
     <script

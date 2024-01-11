@@ -1,17 +1,37 @@
-const url = 'https://meteostat.p.rapidapi.com/stations/hourly?station=10637&start=2020-01-01&end=2020-01-01&tz=Europe%2FBerlin';
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '4c8f941e4amshd0b2a4023f11211p16dea0jsna8c639c2a074',
-		'X-RapidAPI-Host': 'meteostat.p.rapidapi.com'
-	}
+let [seconds, minutes, hours] = [0, 0, 0];
+let displayTime = document.getElementById("displayTime");
+let timer = null;
+console.log("Done");
+
+let stopWatch = () => {
+  seconds++;
+  if (seconds == 60) {
+    seconds = 0;
+    minutes++;
+    if (minutes == 60) {
+      minutes = 0;
+      hours++;
+    }
+  }
+  let h = hours < 10 ? "0" + hours : hours;
+  let m = minutes < 10 ? "0" + minutes : minutes;
+  let s = seconds < 10 ? "0" + seconds : seconds;
+
+  displayTime.innerHTML = h + " hrs : " + m + " mins : " + s + " secs";
 };
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-console.log("hii");
+let watchStart = () => {
+  if (timer != null) {
+    clearInterval(timer);
+  }
+  timer = setInterval(stopWatch, 1000);
+};
+
+let watchStop = () => {
+  clearInterval(timer);
+};
+let watchReset = () => {
+  clearInterval(timer);
+  [seconds, minutes, hours] = [0, 0, 0];
+  displayTime.innerHTML = "00 hrs : 00 mins : 00 secs";
+};
