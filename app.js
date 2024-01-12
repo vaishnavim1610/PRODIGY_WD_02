@@ -17,7 +17,7 @@ let stopWatch = () => {
   let m = minutes < 10 ? "0" + minutes : minutes;
   let s = seconds < 10 ? "0" + seconds : seconds;
 
-  displayTime.innerHTML = h + " hrs : " + m + " mins : " + s + " secs";
+  displayTime.innerHTML = h + "  : " + m + "  : " + s + " ";
 };
 
 let watchStart = () => {
@@ -33,5 +33,5 @@ let watchStop = () => {
 let watchReset = () => {
   clearInterval(timer);
   [seconds, minutes, hours] = [0, 0, 0];
-  displayTime.innerHTML = "00 hrs : 00 mins : 00 secs";
+  displayTime.innerHTML = "00  : 00  : 00 ";
 };
